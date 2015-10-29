@@ -30,6 +30,6 @@ alexFranz.checkBalance()
 alexFranz.sayName()
 val peterVenkman = Human(cash = List(999999999,-56)) // that's shorter
 peterVenkman.sayName()
-peterVenkman.copy(name = "Janine") // this is how to modify an immutable case class
+peterVenkman.copy(name = "Janine") // this is how to get a modified immutable case class
 val humans = alexFranz :: peterVenkman :: Nil
-for (Human(n,_,List(x1,x2)) <- humans) printf ("Now %s has %d dollars\n", n, x1+x2)
+for (Human(n,_,List(x1,x2)) <- humans) printf ("Now %s has %d dollars\n", n, x1+x2) // pattern or custom select
