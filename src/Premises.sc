@@ -1,5 +1,5 @@
 def premises(n:Int):List[Int] = {
-  def premLoop(k:Int,acc:List[Int]):List[Int] = {
+  def premLoop(k:Int = 2, acc:List[Int]):List[Int] = {
     def checkIt(i:Int):List[Int] = {
       def check(lst:List[Int]):Boolean = lst match {
         case Nil => true
@@ -10,7 +10,7 @@ def premises(n:Int):List[Int] = {
     }
     if (k > n) acc else premLoop(k+1, checkIt(k))
   }
-  premLoop(2, Nil)
+  premLoop(acc = Nil)
 }
 
 premises(100)

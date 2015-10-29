@@ -8,19 +8,19 @@ def check(i: Int): String = {
 }
 
 def fizzBuzzList(n:Int):List[String] = {
-  def cyrcle(k:Int, acc: List[String]):List[String] = {
+  def cyrcle(k:Int = 1, acc: List[String]):List[String] = {
     if (k<=n) cyrcle(k+1, acc :+ check(k)) else acc
   }
-  cyrcle(1, Nil)
+  cyrcle(acc = Nil)
 }
 
 fizzBuzzList(100)
 
 def fizzBuzz(n:Int):Unit = {
-  def cyrcle(k:Int, acc: Unit):Unit = {
+  def cyrcle(k:Int = 1, acc: Unit):Unit = {
     if (k<=n) cyrcle(k+1, println(check(k)))
   }
-  cyrcle(1, Nil)
+  cyrcle(acc = Nil)
 }
 
 fizzBuzz(100)
