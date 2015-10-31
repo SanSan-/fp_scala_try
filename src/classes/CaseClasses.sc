@@ -28,8 +28,23 @@ case class Human(name: String = "Peter", surname: String = "Venkman", cash:List[
 val alexFranz = Human("Alex", "Franz", List(78,-92,54))
 alexFranz.checkBalance()
 alexFranz.sayName()
+// partial declaration of object
 val peterVenkman = Human(cash = List(999999999,-56)) // that's shorter
 peterVenkman.sayName()
+// clone method \w mutations
 peterVenkman.copy(name = "Janine") // this is how to get a modified immutable case class
+// filtering
 val humans = alexFranz :: peterVenkman :: Nil
 for (Human(n,_,List(x1,x2)) <- humans) printf ("Now %s has %d dollars\n", n, x1+x2) // pattern as a filter
+
+// How to make immutable data mutable in case class
+case class Zerg(var point:Int) {
+  def setPoint(value:Int):Unit = point=value
+  def getPoint():Int = this.point
+}
+
+val mutalisk = Zerg(77)
+mutalisk.setPoint(42)
+println(mutalisk.getPoint())
+mutalisk.point = 46
+println(mutalisk.getPoint())
