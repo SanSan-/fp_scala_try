@@ -26,7 +26,7 @@ getColor(makeInt(red)).equals(red)
 getColor(0xFF0A0F)
 // make it \w case class
 case class ColorClass(red:Int = 0, blue:Int = 0, green:Int = 0) {
-  def makeInt():Int = {
+  def mkInt():Int = {
     def sumColor(color:List[Int], acc:Int = 0, i:Int = 0):Int = {
       if (i > 2) acc else
         sumColor(color, acc + ((0xFF & color(i)) << 16 - 8*i), i + 1)
@@ -34,7 +34,7 @@ case class ColorClass(red:Int = 0, blue:Int = 0, green:Int = 0) {
     sumColor(color = red :: blue :: green :: Nil)
   }
 
-  def equalToHex(hex:Int):Boolean = hex == makeInt()
+  def equalToHex(hex:Int):Boolean = hex == mkInt()
 
   def getColorFromHex(hex:Int):ColorClass = ColorClass((hex >> 16) & 0xFF, (hex >> 8) & 0xFF, (hex >> 0) & 0xFF)
 
@@ -42,6 +42,6 @@ case class ColorClass(red:Int = 0, blue:Int = 0, green:Int = 0) {
 }
 
 val orange = new ColorClass().getColorFromHex(0xFFA500)
-orange.makeInt()
+orange.mkInt()
 orange equalToHex 0xFFA500
 println(orange.mkString())
