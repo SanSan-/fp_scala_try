@@ -17,10 +17,8 @@ p1.z
 p1.mag()
 p2.distance(p1)
 p2 distance p1 // same thing
-
 val points = Array.fill(10)(Point3D(math.random,math.random,math.random))
 for (point <- points) yield point.mag()
-
 case class Human(name: String = "Peter", surname: String = "Venkman", cash:List[Int] = List(0)) {
   def checkBalance():Int = cash.sum
   def sayName():Unit = printf("%s %s \n", name, surname)
@@ -44,6 +42,7 @@ case class Zerg(var point:Int) {
 }
 
 val mutalisk = Zerg(77)
+println(mutalisk.getPoint())
 mutalisk.setPoint(42)
 println(mutalisk.getPoint())
 mutalisk.point = 46

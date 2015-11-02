@@ -24,7 +24,6 @@ makeInt(red).equals(0xFF0000)
 getColor(makeInt(red))
 getColor(makeInt(red)).equals(red)
 getColor(0xFF0A0F)
-
 // make it \w case class
 case class ColorClass(red:Int = 0, blue:Int = 0, green:Int = 0) {
   def makeInt():Int = {
@@ -39,7 +38,7 @@ case class ColorClass(red:Int = 0, blue:Int = 0, green:Int = 0) {
 
   def getColorFromHex(hex:Int):ColorClass = ColorClass((hex >> 16) & 0xFF, (hex >> 8) & 0xFF, (hex >> 0) & 0xFF)
 
-  def mkString():String = format("0x%02X%02X%02X",red,blue,green)
+  def mkString():String = "0x%02X%02X%02X".format(red,blue,green)
 }
 
 val orange = new ColorClass().getColorFromHex(0xFFA500)
