@@ -24,7 +24,6 @@ def addmod(a:Int)(b:Int):Int = {
 }
 addmod(1)(5)
 
-
 def add4(a: Int): Int => Int = b => a+b
 
 val addTwo = add4(2)
