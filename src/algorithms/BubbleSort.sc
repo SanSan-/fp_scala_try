@@ -1,9 +1,9 @@
 import scala.annotation.tailrec
 
 // classical unsafe example of this piece of shit
-val arr = Array(4, 2, 7, 3, 9, 8, 1, 5)
+val arr = Array.fill(10)(math.round(math.random*100))
 
-def bubble(arr: Array[Int]): Unit = {
+def bubble(arr: Array[Long]): Unit = {
   for (i <- 0 until arr.length - 1) {
     for (j <- 0 until arr.length - 1 - i) {
       if (arr(j) > arr(j + 1)) {
@@ -17,14 +17,14 @@ def bubble(arr: Array[Int]): Unit = {
 bubble(arr)
 arr.foreach(printf("%d ", _))
 
-// re:write it to fp-style
-val arr2 = Array(4, 2, 7, 3, 9, 8, 1, 5)
+// let's rewrite it to fp-style
+val arr2 = Array.fill(10)(math.round(math.random*100))
 
 @tailrec
-def bubbleSort(a: Array[Int], i: Int = 0): Array[Int] = {
+def bubbleSort(a: Array[Long], i: Int = 0): Array[Long] = {
   @tailrec
-  def bubbleUp(b: Array[Int], i: Int, j: Int = 0): Array[Int] = {
-    def bubbleIt(c: Array[Int]): Array[Int] = {
+  def bubbleUp(b: Array[Long], i: Int, j: Int = 0): Array[Long] = {
+    def bubbleIt(c: Array[Long]): Array[Long] = {
       if (c(j) > c(j + 1)) {
         val tmp = c(j)
         c(j) = c(j + 1)
