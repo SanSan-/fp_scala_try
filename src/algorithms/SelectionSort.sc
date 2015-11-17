@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 val arr = Array.fill(10)(math.round(math.random * 100))
 
 def minSort(arr: Array[Long]): Unit = {
@@ -13,4 +15,25 @@ def minSort(arr: Array[Long]): Unit = {
 }
 
 minSort(arr)
-arr.foreach(printf("%d ",_))
+arr.foreach(printf("%d ", _))
+
+val arr2 = Array.fill(10)(math.round(math.random * 100))
+
+@tailrec
+def minimalSort(a: Array[Long], i: Int = 0): Array[Long] = {
+  def setMin(b: Array[Long]): Array[Long] = {
+    @tailrec
+    def findMin(min: Int, j: Int): Int = {
+      if (j == b.length) min else findMin(if (b(j) < b(min)) j else min, j + 1)
+    }
+    val min = findMin(i, i + 1)
+    val tmp = b(i)
+
+    b(i) = b(min)
+    b(min) = tmp
+    b
+  }
+  if (i == a.length - 1) a else minimalSort(setMin(a), i + 1)
+}
+
+minimalSort(arr2)
